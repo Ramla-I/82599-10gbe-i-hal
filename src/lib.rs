@@ -1,3 +1,4 @@
+#![no_std]
 #![allow(dead_code)]
 
 pub(crate) mod regs;
