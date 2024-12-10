@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "An intralingual Hardware Abstraction Layer for the 10 GbE Intel 82599 NIC."
 authors = ["Ramla <ijazramla@gmail.com>"]
 edition = "2021"
+license = "MIT"
+repository = "https://github.com/Ramla-I/intel82599-hal"
+readme = "README.md"
 
 [dependencies]
 volatile = "0.2.7"
