@@ -1,4 +1,4 @@
-# 82599-10gbe-i-hal
+# Intel 82599 10GbE Intralingual HAL
 
 An intralingual Hardware Abstraction Layer (HAL) for the Intel 82599 Ethernet Adapter. By intralingual we mean that all communication rules are conveyed to the compiler using the type system. To learn more about intralingual design refer to this [paper](https://dl.acm.org/doi/10.1145/3625275.3625398).
 
