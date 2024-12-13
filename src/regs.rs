@@ -19,7 +19,6 @@
 
 
 use volatile::{Volatile, ReadOnly, WriteOnly};
-use zerocopy::FromBytes;
 use bit_field::BitField;
 use num_enum::TryFromPrimitive;
 use crate::{*, descriptors::AdvancedTxDescriptor};
@@ -44,7 +43,6 @@ impl ReportStatusBit {
 }
 
 /// The layout in memory of the first set of general registers of the 82599 device.
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct IntelIxgbeRegisters1 {
     /// Device Control Register
@@ -121,7 +119,6 @@ impl IntelIxgbeRegisters1 {
 }
 
 /// The layout in memory of the first set of receive queue registers of the 82599 device.
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct IntelIxgbeRxRegisters1 {
     /// First set of Rx Registers for 64 Rx Queues
@@ -132,7 +129,6 @@ pub struct IntelIxgbeRxRegisters1 {
 const_assert_eq!(core::mem::size_of::<IntelIxgbeRxRegisters1>(), 4096);
 
 /// The layout in memory of the second set of general registers of the 82599 device.
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct IntelIxgbeRegisters2 {
     _padding1:                          [u8; 3840],             // 0x2000 - 0x2EFF
@@ -431,7 +427,6 @@ impl IntelIxgbeRegisters2 {
 }
 
 /// The layout in memory of the transmit queue registers of the 82599 device.
-#[derive(FromBytes)]
 #[repr(C)]
 pub(crate) struct IntelIxgbeTxRegisters {
     /// Set of registers for 128 transmit descriptor queues
@@ -441,7 +436,6 @@ pub(crate) struct IntelIxgbeTxRegisters {
 const_assert_eq!(core::mem::size_of::<IntelIxgbeTxRegisters>(), 2 * 4096);
 
 /// The layout in memory of a region of registers including those storing the MAC address of the 82599 device.
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct IntelIxgbeMacRegisters {
     _padding1:                          [u8; 256],              // 0x8000 - 0x80FF
@@ -505,7 +499,6 @@ impl IntelIxgbeMacRegisters {
 }
 
 /// The layout in memory of the second set of receive queue registers of the 82599 device.
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct IntelIxgbeRxRegisters2 {
     /// Second set of Rx Registers for 64 Rx Queues
@@ -515,7 +508,6 @@ pub struct IntelIxgbeRxRegisters2 {
 const_assert_eq!(core::mem::size_of::<IntelIxgbeRxRegisters2>(), 4096);
 
 /// The layout in memory of the third set of general registers of the 82599 device.
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct IntelIxgbeRegisters3 {
     /// Source Address Queue Filter
@@ -662,7 +654,6 @@ pub struct TDHSet();
 pub struct TDLENSet();
 
 /// Set of registers associated with one transmit descriptor queue.
-#[derive(FromBytes)]
 #[repr(C)]
 pub(crate) struct RegistersTx {
     /// Transmit Descriptor Base Address Low
@@ -771,7 +762,6 @@ impl RegistersTx {
 
 
 /// Set of registers associated with one receive descriptor queue.
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct RegistersRx {
     /// Receive Descriptor Base Address Low

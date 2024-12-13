@@ -1,7 +1,5 @@
 use volatile::Volatile;
-use zerocopy::FromBytes;
 
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct TransmitHead( Volatile<u32> );
 

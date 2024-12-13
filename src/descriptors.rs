@@ -1,5 +1,4 @@
 use volatile::Volatile;
-use zerocopy::FromBytes;
 use bit_field::BitField;
 use crate::regs::ReportStatusBit;
 
@@ -13,7 +12,6 @@ use crate::regs::ReportStatusBit;
 /// Write Back contains information the hardware writes on receiving a packet.
 ///
 /// More information can be found in the 82599 datasheet.
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct AdvancedTxDescriptor {
     /// Physical address of the packet buffer.
@@ -74,7 +72,6 @@ impl AdvancedTxDescriptor {
 /// It has 2 modes: Read and Write Back, both of which use the whole 128 bits. 
 /// Read contains the addresses that the driver writes.
 /// Write Back contains information the hardware writes on receiving a packet.
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct AdvancedRxDescriptor {
     /// Starting physcal address of the packet buffer.
@@ -148,7 +145,6 @@ impl AdvancedRxDescriptor {
 
 /// Descriptor used to share information about packet between device and driver. 
 /// It's the descriptor type used in older Intel NICs and the E1000 driver.
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct LegacyTxDescriptor {
     /// The physical address of the packet buffer
@@ -196,7 +192,6 @@ impl core::fmt::Debug for LegacyTxDescriptor {
 /// Legacy Receive Descriptor used to share packet information with the device. 
 /// The driver writes to the upper 64 bits, and the NIC writes to the lower 64 bits.
 /// It's the descriptor type used in older Intel NICs and the E1000 driver.
-#[derive(FromBytes)]
 #[repr(C)]
 pub struct LegacyRxDescriptor {
     /// The physical address of the receive buffer
